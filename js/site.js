@@ -2,11 +2,14 @@
 // Get user input from form
 function getValues()
 {
-  userInput = document.getElementById("userInput").value;
-
-  isPalindrome = checkPalindrome(userInput);
-
-  stringReversed = reverseString(userInput)
+  
+  let userInput = document.getElementById("userInput").value;
+  
+  let isPalindrome = checkPalindrome(userInput);
+  
+  let stringReversed = reverseString(userInput);
+  
+  document.getElementById("alert").classList.add("invisible");
 
   returnResult(isPalindrome, stringReversed);
 
@@ -16,14 +19,14 @@ function getValues()
 function checkPalindrome(userInput)
 {
   // Set all elements to the same case
-  lowerCaseInput = userInput.toLowerCase();
+  let sanitizedInput = userInput.toLowerCase();
 
   // Remove all symbols and spaces
 
 
-  for (let i = 0; i < userInput.length/2; i++) {
-    
-    if(userInput[i] === userInput[userInput.length-1-i])
+  for (let i = 0; i < Math.floor(sanitizedInput.length/2); i++)
+  {
+    if(sanitizedInput[i] === sanitizedInput[sanitizedInput.length-1-i])
     {
       i++;
     }
@@ -31,32 +34,35 @@ function checkPalindrome(userInput)
     {
       return "false"
     }
-
-    return true;
   }
+
+  return true;
 }
 
 // Reverse user String for display
 function reverseString(userInput)
 {
 
-  resultArray = [];
+  let resultString = "";
 
-  for (let i = userInput-1; i >=0 ; i--)
+  for(let i = userInput.length-1; i >= 0 ; i--)
   {
-    resultArray.push(userInput[i])
+    resultString += userInput[i];
   }
 
-  return resultArray;
+  return resultString;
 
 }
 
 
 // Return reversed string and result to user
-function returnResult(reversedInput)
+function returnResult(isPalindrome, reversedInput)
 {
-  resultDisplay = document.getElementById("successMsg").innerHTML;
-
-  resultDisplay = reversedInput;
+  // Write to the page
+  document.getElementById("msg").innerHTML = `Success! ${reversedInput} is a Palindrome!`;
+  
+  // Show the alert box
+  document.getElementById("alert").classList.remove("invisible");
+  
 
 }
