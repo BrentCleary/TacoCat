@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Brent Cleary</title>
+    <title>TacoCat: A Coding Project by Brent Cleary</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
   <!-- ====== NAV SECTION ====== -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-          <a class="navbar-brand" href="/"><img src="img/LogoFavicon.jpg" class="d-inline-block align-text-top" width="30" height="24" alt="Brent Cleary Logo"> App Name</a>
+          <a class="navbar-brand" href="/"><img src="img/LogoFavicon.jpg" class="d-inline-block align-text-top" width="30" height="24" alt="Brent Cleary Logo"> TacoCat</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
               aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
                       <a class="nav-link" href="code.html">The Code</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/BrentCleary/TacoCat">Git Repo</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" target="_blank" href="https://brentcleary-portfolio.netlify.app/">About</a>
@@ -54,8 +54,38 @@
   </nav>
   <!-- ====== MAIN SECTION ====== -->
   <main class="flex-shrink-0">
-    <div class="container">
+    <div class="container mt-5">
+      <div class="row row-cols-1 row-cols-lg-2">
 
+        <!-- Description and Instructions -->
+          <div class="col col-lg-4 border-end border-2 p-3">
+            <h2 class="fw-bold 1h-1 mb-3">TacoCat: A Coding Project</h2>
+            <p class="lead">What do you get when you put a cat in a taco? A Palindrome!</p>
+            <h3>Instructions</h3>
+            <p class="lead">Enter word or phrase, and Taco Cat will tell you if it is a Palindrome.</p>
+          </div>
+          <div class="col col-lg-8 p-3">
+            <h3>Enter a Word, Sentence, or Phrase</h3>
+            <form class="row gy-2 gx-3">
+              <div>
+                <input class="form-control" type="text" id="userInput" placeholder="Write your phrase here..." aria-label="userInput">
+              </div>
+              <div>
+                <button class="btn btn-primary mt-2" id="submitButton">TacoCat</button>
+              </div>
+            </form>
+            <div class="row mt-5">
+              <div class="col">
+                <h2 class="border-bottom border-1">Results</h2>
+                <p class="">Success! <span id="successMsg"></span> is a Palindrome!</p>
+                <p class="">It seems <span id="successMsg"></span>is not Palindrome.</p> 
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
     </div>
   </main>
 
