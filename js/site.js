@@ -2,16 +2,14 @@
 // Get user input from form
 function getValues()
 {
-  
-  let userInput = document.getElementById("userInput").value;
-  
-  let isPalindrome = checkPalindrome(userInput);
-  
-  let stringReversed = reverseString(userInput);
-  
+  // make sure the alert is invisible
   document.getElementById("alert").classList.add("invisible");
 
-  returnResult(isPalindrome, stringReversed);
+  let userInput = document.getElementById("userInput").value;
+  
+  let returnObj = checkPalindrome(userInput);
+
+  displayMessage(returnObj);
 
 }
 
@@ -22,47 +20,47 @@ function checkPalindrome(userInput)
   let sanitizedInput = userInput.toLowerCase();
 
   // Remove all symbols and spaces
+  
+  // regex includes all characters listed below
+  let regex = /[^a-z0-9]/gi;
+  // replace(regex, "") will result in  
+  sanitizedInput = sanitizedInput.replace(regex, "");
 
+  let revString = [];
+  let returnObj = {};
 
-  for (let i = 0; i < Math.floor(sanitizedInput.length/2); i++)
+  for (let i = sanitizedInput.length-1; i >= 0 ; i--)
   {
-    if(sanitizedInput[i] === sanitizedInput[sanitizedInput.length-1-i])
-    {
-      i++;
-    }
-    else
-    {
-      return "false"
-    }
+    revString += sanitizedInput[i];
   }
 
-  return true;
-}
-
-// Reverse user String for display
-function reverseString(userInput)
-{
-
-  let resultString = "";
-
-  for(let i = userInput.length-1; i >= 0 ; i--)
+  if(revString == sanitizedInput)
   {
-    resultString += userInput[i];
+    returnObj.msg = "Well Done! You entered a Palindrome!"
+    returnObj.alertClass = "alert-success" 
+  }
+  else
+  {
+    returnObj.msg = "Sorry. You did not enter a Palindrome!"
+    returnObj.alertClass = "alert-danger" 
   }
 
-  return resultString;
+  returnObj.reversed = revString;
 
+  return returnObj;
 }
 
 
 // Return reversed string and result to user
-function returnResult(isPalindrome, reversedInput)
+function displayMessage(returnObj)
 {
   // Write to the page
-  document.getElementById("msg").innerHTML = `Success! ${reversedInput} is a Palindrome!`;
+  document.getElementById("alertHeader").innerHTML = returnObj.msg;
   
   // Show the alert box
-  document.getElementById("alert").classList.remove("invisible");
+  document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}.`;
   
+  document.getElementById("alert").classList.remove("invisible");
+  document.getElementById("alert").classList.add(returnObj.alertClass);
 
 }
