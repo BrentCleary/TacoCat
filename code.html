@@ -61,16 +61,78 @@
       <div class="row row-cols-1 row-cols-lg-2">
         <div class="col-lg-8">
           <pre class="line-numbers"><code class="language-javascript">
-            // Call Hello World
-            function helloWorld(){
-              alert("Hello World");
+
+            // Get user input from form
+            function getValues()
+            {
+              // make sure the alert is invisible
+              document.getElementById("alert").classList.add("invisible");
+            
+              let userInput = document.getElementById("userInput").value;
+              
+              let returnObj = checkPalindrome(userInput);
+            
+              displayMessage(returnObj);
+            
+            }
+            
+            // Test to see if it is a Palindrome
+            function checkPalindrome(userInput)
+            {
+              // Set all elements to the same case
+              let sanitizedInput = userInput.toLowerCase();
+            
+              // Remove all symbols and spaces
+              
+              // regex includes all characters listed below
+              let regex = /[^a-z0-9]/gi;
+              // replace(regex, "") will result in  
+              sanitizedInput = sanitizedInput.replace(regex, "");
+            
+              let revString = [];
+              let returnObj = {};
+            
+              for (let i = sanitizedInput.length-1; i >= 0 ; i--)
+              {
+                revString += sanitizedInput[i];
+              }
+            
+              if(revString == sanitizedInput)
+              {
+                returnObj.msg = "Well Done! You entered a Palindrome!"
+                returnObj.alertClass = "alert-success" 
+              }
+              else
+              {
+                returnObj.msg = "Sorry. You did not enter a Palindrome!"
+                returnObj.alertClass = "alert-danger" 
+              }
+            
+              returnObj.reversed = revString;
+            
+              return returnObj;
+            }
+            
+            
+            // Return reversed string and result to user
+            function displayMessage(returnObj)
+            {
+              // Write to the page
+              document.getElementById("alertHeader").innerHTML = returnObj.msg;
+              
+              // Show the alert box
+              document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}.`;
+              
+              document.getElementById("alert").classList.remove("invisible");
+              document.getElementById("alert").classList.add(returnObj.alertClass);
+            
             }
           </code>
           </pre>
         </div>
         <div class="col-lg-4">
           <h5>TacoCat</h5>
-          <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+          <p>TacoCat takes in a string of characters and checks if they are palindrome and returns the reversed string to the user.</p>
         </div>
       </div>
     </div>
