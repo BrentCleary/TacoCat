@@ -61,6 +61,5 @@ function displayMessage(returnObj)
   document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}.`;
   
   document.getElementById("alert").classList.remove("invisible");
-  document.getElementById("alert").classList.add(returnObj.alertClass);
 
 }
