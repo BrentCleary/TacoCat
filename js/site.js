@@ -37,12 +37,12 @@ function checkPalindrome(userInput)
   if(revString == sanitizedInput)
   {
     returnObj.msg = "Well Done! You entered a Palindrome!"
-    returnObj.alertClass = "alert-success" 
+    returnObj.alertClass = "alert alert-success mt-5" 
   }
   else
   {
     returnObj.msg = "Sorry. You did not enter a Palindrome!"
-    returnObj.alertClass = "alert-danger" 
+    returnObj.alertClass = "alert alert-danger mt-5" 
   }
 
   returnObj.reversed = revString;
