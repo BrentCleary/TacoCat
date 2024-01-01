@@ -58,8 +58,7 @@ function displayMessage(returnObj)
   document.getElementById("alertHeader").innerHTML = returnObj.msg;
   
   // Show the alert box
-  // document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}`;
-  document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.alertClass}`;
+  document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}`;
   
   // Remove existing classes to avoid duplication
   let alertElement = document.getElementById("alert");
