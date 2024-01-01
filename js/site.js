@@ -58,8 +58,22 @@ function displayMessage(returnObj)
   document.getElementById("alertHeader").innerHTML = returnObj.msg;
   
   // Show the alert box
-  document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}.`;
+  // document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.reversed}`;
+  document.getElementById("msg").innerHTML = `Your phrase reversed is: ${returnObj.alertClass}`;
   
+  // Remove existing classes to avoid duplication
+  let alertElement = document.getElementById("alert");
+  alertElement.className = "alert";
+
+  // Split and add each class individually
+  let classes = returnObj.alertClass.split(' ');
+  classes.forEach(className => {
+    alertElement.classList.add(className);
+  });
+
   document.getElementById("alert").classList.remove("invisible");
+
+  // alertElement.classList.remove("invisible"); // First, remove the "invisible" class
+  // alertElement.classList.add(`${returnObj.alertClass}`); // Then add the new class
 
 }
