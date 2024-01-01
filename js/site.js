@@ -72,7 +72,5 @@ function displayMessage(returnObj)
 
   document.getElementById("alert").classList.remove("invisible");
 
-  // alertElement.classList.remove("invisible"); // First, remove the "invisible" class
-  // alertElement.classList.add(`${returnObj.alertClass}`); // Then add the new class
 
 }
